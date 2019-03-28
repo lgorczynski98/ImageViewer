@@ -1,9 +1,13 @@
 package imageViewer;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -16,10 +20,11 @@ public class ImageViewerFrame extends JFrame
     private static final int DEFAULT_HEIGHT = 600;
 
     private JLabel label;
+    private String path;
 
-    private void drowImage(String name)
+    private void drowImage()
     {
-        ImageIcon img = new ImageIcon(name);
+        ImageIcon img = new ImageIcon(path);
         setSize(img.getIconWidth() + 16, img.getIconHeight() + 56);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
@@ -63,7 +68,7 @@ public class ImageViewerFrame extends JFrame
 
         label = new JLabel();
         add(label);
-
+        label.addMouseWheelListener(new Zoomer());
         connectToDragDrop();
     }
 
@@ -91,8 +96,8 @@ public class ImageViewerFrame extends JFrame
 
             if (r == JFileChooser.APPROVE_OPTION)
             {
-                String name = chooser.getSelectedFile().getPath();
-                drowImage(name);
+                path = chooser.getSelectedFile().getPath();
+                drowImage();
             }
         }
     }
@@ -142,14 +147,65 @@ public class ImageViewerFrame extends JFrame
                         List<File> files = (List<File>) t.getTransferData(f);
                         for (File file : files)
                         {
-                            String name = file.getPath();
-                            drowImage(name);
+                            path = file.getPath();
+                            drowImage();
                         }
                     }
                 }
                 catch(Exception e)
                 {
                     JOptionPane.showMessageDialog(null, e);
+                }
+            }
+        }
+    }
+
+    private class Zoomer implements MouseWheelListener
+    {
+        private Image ZoomImage(int w, int h, Image img)
+        {
+            BufferedImage buf = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+            Graphics2D grf = buf.createGraphics();
+            grf.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            grf.drawImage(img,0,0,w,h,null);
+            grf.dispose();
+            return buf;
+        }
+
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e)
+        {
+            int point = e.getWheelRotation();
+            if(point < 0)
+            {
+                int w = label.getIcon().getIconWidth();
+                int h = label.getIcon().getIconHeight();
+                File file = new File(path);
+                try
+                {
+                    Image img = ImageIO.read(file);
+                    ImageIcon ic = new ImageIcon(ZoomImage(w + 50, h + 50, img));
+                    label.setIcon(ic);
+                }
+                catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
+            else
+            {
+                int w = label.getIcon().getIconWidth();
+                int h = label.getIcon().getIconHeight();
+                File file = new File(path);
+                try
+                {
+                    Image img = ImageIO.read(file);
+                    ImageIcon ic = new ImageIcon(ZoomImage(w - 50, h - 50, img));
+                    label.setIcon(ic);
+                }
+                catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(null, ex);
                 }
             }
         }
