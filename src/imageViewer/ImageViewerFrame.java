@@ -69,6 +69,8 @@ public class ImageViewerFrame extends JFrame
         label = new JLabel();
         add(label);
         label.addMouseWheelListener(new Zoomer());
+        label.addMouseListener(new ImageMover());
+        label.addMouseMotionListener(new ImageMover());
         connectToDragDrop();
     }
 
