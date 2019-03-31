@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166d491d-cab6-406a-a24e-a3ca3b13d01f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$DragListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$DragListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$FileOpenListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$FileOpenListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$FileOpenListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$FileOpenListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$MessageBoxAuthor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$MessageBoxAuthor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$Zoomer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame$Zoomer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PrzeglądarkaObrazów/imageViewer/ImageViewerFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageViewer/ImageViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/ImageViewerFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,7 +24,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/imageViewer/LoggingImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="272">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -25,29 +33,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/imageViewer/ImageViewerFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="71" column="46" lean-forward="true" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+            <state relative-caret-position="416">
+              <caret line="75" column="36" lean-forward="true" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#reading_files#0;class#ImageViewerFrame#0" />
+                <element signature="method#init_label#0;class#ImageViewerFrame#0" />
+                <element signature="method#drowImage#0;class#ImageViewerFrame#0" />
+                <element signature="method#drowImage#1;class#ImageViewerFrame#0" />
                 <element signature="method#connectToDragDrop#0;class#ImageViewerFrame#0" />
-                <element signature="e#1870#1871#0" expanded="true" />
-                <element signature="e#1916#1917#0" expanded="true" />
+                <element signature="method#ImageViewerFrame#0;class#ImageViewerFrame#0" />
+                <element signature="e#2910#2911#0" expanded="true" />
+                <element signature="e#2956#2957#0" expanded="true" />
                 <element signature="class#FileOpenListener#0;class#ImageViewerFrame#0" />
                 <element signature="class#MessageBoxAuthor#0;class#ImageViewerFrame#0" />
                 <element signature="class#DragListener#0;class#ImageViewerFrame#0" />
+                <element signature="class#Zoomer#0;class#ImageViewerFrame#0" />
+                <element signature="class#KeyImageChanger#0;class#ImageViewerFrame#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/imageViewer/ImageMover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+            <state relative-caret-position="153">
+              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,7 +115,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,12 +137,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553780219875" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554037202731" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -170,16 +185,18 @@
       <workItem from="1553774830259" duration="5378000" />
       <workItem from="1553800420202" duration="1398000" />
       <workItem from="1553873383071" duration="2591000" />
+      <workItem from="1554027242537" duration="10303000" />
+      <workItem from="1554039107747" duration="1788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19820000" />
+    <option name="totallyTimeSpent" value="31911000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09968017" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10181237" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -188,8 +205,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41495124" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3954496" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -232,25 +249,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imageViewer/ImageViewerFrame.java">
+    <entry file="jar://D:/Java/jdk-11.0.1/lib/src.zip!/java.desktop/java/awt/event/KeyListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="71" column="46" lean-forward="true" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#connectToDragDrop#0;class#ImageViewerFrame#0" />
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-            <element signature="class#FileOpenListener#0;class#ImageViewerFrame#0" />
-            <element signature="class#MessageBoxAuthor#0;class#ImageViewerFrame#0" />
-            <element signature="class#DragListener#0;class#ImageViewerFrame#0" />
-          </folding>
+        <state relative-caret-position="261">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/imageViewer/LoggingImageViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="272">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -260,10 +268,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/imageViewer/ImageMover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="153">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imageViewer/ImageViewerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="75" column="36" lean-forward="true" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#reading_files#0;class#ImageViewerFrame#0" />
+            <element signature="method#init_label#0;class#ImageViewerFrame#0" />
+            <element signature="method#drowImage#0;class#ImageViewerFrame#0" />
+            <element signature="method#drowImage#1;class#ImageViewerFrame#0" />
+            <element signature="method#connectToDragDrop#0;class#ImageViewerFrame#0" />
+            <element signature="method#ImageViewerFrame#0;class#ImageViewerFrame#0" />
+            <element signature="e#2910#2911#0" expanded="true" />
+            <element signature="e#2956#2957#0" expanded="true" />
+            <element signature="class#FileOpenListener#0;class#ImageViewerFrame#0" />
+            <element signature="class#MessageBoxAuthor#0;class#ImageViewerFrame#0" />
+            <element signature="class#DragListener#0;class#ImageViewerFrame#0" />
+            <element signature="class#Zoomer#0;class#ImageViewerFrame#0" />
+            <element signature="class#KeyImageChanger#0;class#ImageViewerFrame#0" />
           </folding>
         </state>
       </provider>

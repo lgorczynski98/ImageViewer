@@ -3,15 +3,14 @@ package imageViewer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ImageViewerFrame extends JFrame
@@ -21,14 +20,57 @@ public class ImageViewerFrame extends JFrame
 
     private JLabel label;
     private String path;
+    private ArrayList<String> files;
 
-    private void drowImage()
+    private void reading_files()
     {
-        ImageIcon img = new ImageIcon(path);
+        try
+        {
+            int end = path.lastIndexOf('\\');
+            String filePath = path.substring(0, end);
+            File file = new File(filePath);
+            String [] str= file.list();
+            files = new ArrayList<>(Arrays.asList(str));
+            for(int i = 0; i < files.size(); i++)
+            {
+                String s = files.get(i);
+                files.set(i, filePath + '\\' + s);
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void init_label(ImageIcon img)
+    {
+        reading_files();
         setSize(img.getIconWidth() + 16, img.getIconHeight() + 56);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
         label.setIcon(img);
+    }
+
+    private void drowImage()
+    {
+        ImageIcon img = new ImageIcon(path);
+        if(img.getIconWidth() > 0 && img.getIconHeight() > 0)
+        {
+            init_label(img);
+        }
+    }
+
+    private boolean drowImage(String file_name)
+    {
+        ImageIcon img = new ImageIcon(file_name);
+        if(img.getIconWidth() > 0 && img.getIconHeight() > 0)
+        {
+            path = file_name;
+            init_label(img);
+            return true;
+        }
+        return false;
     }
 
     private void connectToDragDrop()
@@ -68,9 +110,11 @@ public class ImageViewerFrame extends JFrame
 
         label = new JLabel();
         add(label);
+        addKeyListener(new KeyImageChanger());
         label.addMouseWheelListener(new Zoomer());
         label.addMouseListener(new ImageMover());
         label.addMouseMotionListener(new ImageMover());
+        //label.addKeyListener(new KeyImageChanger());
         connectToDragDrop();
     }
 
@@ -210,6 +254,51 @@ public class ImageViewerFrame extends JFrame
                     JOptionPane.showMessageDialog(null, ex);
                 }
             }
+        }
+    }
+
+    private class KeyImageChanger implements KeyListener
+    {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e)
+        {
+            if(e.getKeyCode() == KeyEvent.VK_LEFT && files != null) //nie dziala -\(,)/-
+            {
+                int index = files.indexOf(path);
+                int i = (index - 1) % (files.size());
+                if (i == -1) i = files.size() - 1;
+                while(i != index)
+                {
+                    String name = files.get(i);
+                    if(drowImage(name))
+                        break;
+                    i = (i - 1) % (files.size());
+                    if (i == -1) i = files.size() - 1;
+                }
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_RIGHT && files != null)   //to dziala dobrze ale powinien tak dzialac lewy XD
+            {
+                int index = files.indexOf(path);
+                int i = (index + 1) % (files.size());
+                while(i != index)
+                {
+                    String name = files.get(i);
+                    if(drowImage(name))
+                        break;
+                    i = (i + 1) % (files.size());
+                }
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
         }
     }
 }
