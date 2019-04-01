@@ -46,10 +46,24 @@ public class ImageViewerFrame extends JFrame
     private void init_label(ImageIcon img)
     {
         reading_files();
-        setSize(img.getIconWidth() + 16, img.getIconHeight() + 56);
+        if(img.getIconHeight() > 1920 || img.getIconHeight() > 1080)
+        {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            int w = (int) screenSize.getWidth();
+            int h = (int) screenSize.getHeight();
+            Zoomer resized = new Zoomer();
+            Image resizedImg = resized.ZoomImage(w, h, img.getImage());
+            img = new ImageIcon(resized.ZoomImage(w, h, resizedImg));
+            setSize(w,h);
+        }
+        else {setSize(img.getIconWidth() + 16, img.getIconHeight() + 56);}
+
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
+        setLocationRelativeTo(null);
         label.setIcon(img);
+        String name = path.substring(path.lastIndexOf('\\') + 1);
+        setTitle("Przegladarka Obrazow : " + name);
     }
 
     private void drowImage()
@@ -135,6 +149,30 @@ public class ImageViewerFrame extends JFrame
 
                 public String getDescription() {
                     return "Obrazy GIF";
+                }
+            });
+
+            chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+            {
+                public boolean accept(File f)
+                {
+                    return f.getName().toLowerCase().endsWith(".jpg") || f.isDirectory();
+                }
+
+                public String getDescription() {
+                    return "Obrazy JPG";
+                }
+            });
+
+            chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+            {
+                public boolean accept(File f)
+                {
+                    return f.getName().toLowerCase().endsWith(".png") || f.isDirectory();
+                }
+
+                public String getDescription() {
+                    return "Obrazy PNG";
                 }
             });
 
@@ -247,7 +285,12 @@ public class ImageViewerFrame extends JFrame
                 {
                     Image img = ImageIO.read(file);
                     ImageIcon ic = new ImageIcon(ZoomImage(w - 50, h - 50, img));
-                    label.setIcon(ic);
+                    if(ic.getIconWidth() > 0 || ic.getIconHeight() > 0)
+                        label.setIcon(ic);
+                }
+                catch(IllegalArgumentException ex)
+                {
+                    //ImageIcon ic = new ImageIcon(ZoomImage(w + 50, h + 50, img));
                 }
                 catch(Exception ex)
                 {
@@ -268,8 +311,8 @@ public class ImageViewerFrame extends JFrame
         @Override
         public void keyPressed(KeyEvent e)
         {
-            if(e.getKeyCode() == KeyEvent.VK_LEFT && files != null) //nie dziala -\(,)/-
-            {
+            if(e.getKeyCode() == KeyEvent.VK_LEFT && files != null)
+                {
                 int index = files.indexOf(path);
                 int i = (index - 1) % (files.size());
                 if (i == -1) i = files.size() - 1;
@@ -282,7 +325,7 @@ public class ImageViewerFrame extends JFrame
                     if (i == -1) i = files.size() - 1;
                 }
             }
-            else if(e.getKeyCode() == KeyEvent.VK_RIGHT && files != null)   //to dziala dobrze ale powinien tak dzialac lewy XD
+            else if(e.getKeyCode() == KeyEvent.VK_RIGHT && files != null)
             {
                 int index = files.indexOf(path);
                 int i = (index + 1) % (files.size());
